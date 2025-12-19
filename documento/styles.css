@@ -1,0 +1,37 @@
+#loadMoreBtn{
+  display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  border: none;
+  background: #000000;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#loadMoreBtn:hover{
+  background: #000000;
+}
+
+.relative:hover .submenu {
+  display: block;
+}
+
+.submenu {
+  opacity: 0;
+  visibility: hidden;
+  /* El secreto está aquí: */
+  transition: opacity 0.3s, visibility 2s linear 0.3s; 
+}
+
+.parent:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  /* Al entrar, queremos que sea instantáneo */
+  transition-delay: 5s; 
+}
+
+
+
+
+

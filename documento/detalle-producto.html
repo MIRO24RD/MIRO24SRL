@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Detalle del Producto | MIRO24</title>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                       'primary': '#16a34a', // Sky Blue para acentos
+                        'secondary': '#0f172a', // Slate-900 para fondo de tarjetas/header
+                        'bg-dark': '#0B1120', // Fondo principal oscuro
+                        'text-light': '#e2e8f0', // Texto claro
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+</head>
+<body id="product-detail-page" class="bg-bg-dark text-text-light min-h-screen">
+    
+    <header id="main-header" class="bg-secondary shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary">miro <span class="text-white">24</span></a>
+            <div class="flex items-center space-x-4">
+                
+              
+
+                <a href="index.html" class="hidden md:block text-text-light hover:text-primary transition duration-300">Volver al Catálogo</a>
+                <button id="cart-button" class="relative text-text-light hover:text-primary transition duration-300">
+                    <i data-lucide="shopping-cart"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-primary text-xs w-5 h-5 flex items-center justify-center rounded-full font-bold">0</span>
+                </button>
+          
+    </header>
+
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-80 bg-slate-900/95 backdrop-blur-lg z-[100] transform translate-x-full transition-transform duration-300 shadow-2xl p-6 flex flex-col justify-between">
+        <div>
+            <div class="flex justify-between items-center pb-4 border-b border-slate-700 mb-6">
+                <h3 class="text-xl font-bold text-primary">Tu Carrito</h3>
+                <button id="close-cart-btn" class="text-text-light hover:text-primary transition duration-300">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div id="cart-items-container" class="space-y-4 overflow-y-auto max-h-[calc(100vh-280px)] text-center">
+                <p class="text-center text-slate-500">El carrito está vacío.</p>
+            </div>
+        </div>
+        <div class="border-t border-slate-700 pt-6">
+            <div class="flex justify-between font-bold text-lg mb-4">
+                <span>Total:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button id="checkout-btn" class="w-full bg-primary text-bg-dark py-3 rounded-lg font-bold hover:bg-opacity-80 transition duration-300">
+                <i data-lucide="credit-card" class="inline w-5 h-5 mr-2"></i> Crear Cotización 
+            </button>
+        </div>
+    </div>
+    <div id="cart-overlay" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300"></div>
+    
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pt-20">
+        
+        <div id="product-detail-container" class="bg-secondary p-8 rounded-xl shadow-2xl border border-slate-700">
+            <p class="text-center py-10 text-slate-400">Cargando detalles del producto...</p>
+        </div>
+
+
+    </main>
+    
+    <footer class="bg-secondary text-slate-400 py-8 mt-12 border-t border-slate-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div class="flex space-x-6 text-sm">
+                <a href="index.html" class="hover:text-primary transition duration-300">Inicio</a>
+              
+            </div>
+            <p class="text-sm">&copy; 2024 MIRO24. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
